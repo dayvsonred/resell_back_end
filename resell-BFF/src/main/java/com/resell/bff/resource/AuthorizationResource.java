@@ -1,8 +1,6 @@
 package com.resell.bff.resource;
 
 
-import com.resell.bff.dto.JwtDTO;
-import com.resell.bff.service.AuthorizationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/resell-bff/authorization")
 public class AuthorizationResource {
 
-    @Autowired
-    AuthorizationService authorizationService;
-
-    @Operation(summary = "Get Token JWT")
-    @GetMapping(value = "/jwt", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<JwtDTO> accessValid(){
-        return ResponseEntity.ok(authorizationService.accessValid());
-    }
+//    @Autowired
+//    AuthorizationService authorizationService;
+//
+//    @Operation(summary = "Get Token JWT")
+//    @GetMapping(value = "/jwt", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<JwtDTO> accessValid(){
+//        return ResponseEntity.ok(authorizationService.accessValid());
+//    }
 }
