@@ -12,7 +12,7 @@ import com.resell.users.entities.User;
 import com.resell.users.repositories.UserRepository;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/resell-users/users")
 public class UserResource {
 	
 	@Autowired

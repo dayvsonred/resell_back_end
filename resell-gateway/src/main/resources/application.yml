@@ -18,6 +18,10 @@ spring:
         uri: lb://resell-bff
         predicates:
         - Path=/resell-bff/**
+      - id: resell-users
+        uri: lb://resell-users
+        predicates:
+        - Path=/resell-users/**
       - id: openapi
         uri: lb://api-gateway
         predicates:
