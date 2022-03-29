@@ -12,4 +12,18 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true
+          #lower-case-service-id: true
+      routes:
+      - id: resell-bff
+        uri: lb://resell-bff
+        predicates:
+        - Path=/resell-bff/**
+      - id: openapi
+        uri: lb://api-gateway
+        predicates:
+        - Path=/v3/api-docs/**
+        filters:
+        - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+        sleuth:
+          sampler:
+            probability: 1.0
