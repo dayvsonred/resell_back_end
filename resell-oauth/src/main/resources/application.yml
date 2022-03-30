@@ -14,5 +14,5 @@ eureka:
 jwt:
   secret: "MY-SECRET-KEY"
   client:
-    name: "NAME_JWT"
-    secret: "123456_JWT"
+    name: "API_NAME_ACCESS"
+    secret: "API_SECRET_ACCESS"
