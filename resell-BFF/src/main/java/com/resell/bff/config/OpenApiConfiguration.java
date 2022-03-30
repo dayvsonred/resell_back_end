@@ -8,9 +8,9 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 
 @OpenAPIDefinition(info =
-@Info(title = "Cambio Service API",
+@Info(title = "BFF Service API",
         version = "v1",
-        description = "Documentation of Cambio Service API"))
+        description = "Documentation of BFF Service API"))
 public class OpenApiConfiguration {
 
     @Bean
@@ -19,7 +19,7 @@ public class OpenApiConfiguration {
                 .components(new Components())
                 .info(
                         new io.swagger.v3.oas.models.info.Info()
-                                .title("Cambio Service API")
+                                .title("BFF Service API")
                                 .version("v1")
                                 .license(
                                         new License()
