@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,5 +25,8 @@ public class Customer implements Serializable {
     @ManyToOne
     @JoinColumn(name="person_id", nullable=false)
     private Person person;
+
+    @OneToMany(mappedBy="customer")
+    private List<Sales> sales;
 
 }

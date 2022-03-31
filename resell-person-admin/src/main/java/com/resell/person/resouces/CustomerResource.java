@@ -1,5 +1,6 @@
 package com.resell.person.resouces;
 
+import com.resell.person.dto.CustomerDTO;
 import com.resell.person.dto.CustomerListRequestDTO;
 import com.resell.person.entities.Customer;
 import com.resell.person.entities.Person;
@@ -23,4 +24,10 @@ public class CustomerResource {
     public ResponseEntity<List<Customer>> customerList(@RequestBody CustomerListRequestDTO dto) throws Exception {
         return ResponseEntity.ok(this.customerServiceImpl.myCustomers(dto.getPerson_id()));
     }
+
+    @PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Customer> customerInsert(@RequestBody CustomerDTO dto) throws Exception {
+        return ResponseEntity.ok(this.customerServiceImpl.customerInsert(dto));
+    }
+
 }

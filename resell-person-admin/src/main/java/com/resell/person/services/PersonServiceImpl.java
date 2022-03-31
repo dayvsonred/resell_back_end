@@ -3,7 +3,9 @@ package com.resell.person.services;
 import com.resell.person.dto.CustomerListRequestDTO;
 import com.resell.person.dto.PersonDTO;
 import com.resell.person.entities.Person;
+import com.resell.person.exception.PersonException;
 import com.resell.person.repositories.PersonRepository;
+import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +54,10 @@ public class PersonServiceImpl implements PersonService{
                 .phone(dto.getPhone())
                 .build();
         return this.create(person);
+    }
+
+    public Person getPerson(Long id) throws PersonException{
+        return personRepository.findById(id).orElseThrow(() -> new PersonException("Person_NOT_FOUND"));
     }
 
 
