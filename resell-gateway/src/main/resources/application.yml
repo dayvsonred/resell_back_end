@@ -45,6 +45,10 @@ zuul:
     resell-users:
       service-id: resell-users
       path: /resell-users/**
+    resell-person:
+      service-id: resell-person
+      path: /resell-person/**
+
 
 jwt:
   secret: "MY-SECRET-KEY"
