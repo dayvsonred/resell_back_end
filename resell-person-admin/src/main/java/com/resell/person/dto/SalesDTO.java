@@ -12,6 +12,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -25,18 +26,20 @@ public class SalesDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+    private BigDecimal price;
     private Boolean paid;
-    private LocalDate saleDate;
-    private LocalDate dueDate;
+    private String saleDate;
+    private String dueDate;
     private Long part;
     private LocalDateTime createDate;
     private Long customer;
 
     public SalesDTO(Sales obj){
         this.id = obj.getId();
+        this.price = obj.getPrice();
         this.paid = obj.getPaid();
-        this.saleDate = obj.getSaleDate();
-        this.dueDate = obj.getDueDate();
+        this.saleDate = obj.getSaleDate().toString();
+        this.dueDate = obj.getDueDate().toString();
         this.part = obj.getPart();
         this.createDate = obj.getCreateDate();
         this.customer = obj.getCustomer().getId();

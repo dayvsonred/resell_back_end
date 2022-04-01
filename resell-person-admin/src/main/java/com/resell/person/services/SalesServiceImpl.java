@@ -4,6 +4,7 @@ import com.resell.person.dto.SalesDTO;
 import com.resell.person.entities.Sales;
 import com.resell.person.exception.CustomerException;
 import com.resell.person.repositories.SalesRepository;
+import com.resell.person.util.FormatterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +44,9 @@ public class SalesServiceImpl implements SalesService {
     public Sales insert(SalesDTO obj) throws CustomerException {
         return this.create(Sales.builder()
                         .paid(obj.getPaid())
-                        .saleDate(obj.getSaleDate())
-                        .dueDate(obj.getDueDate())
+                        .price(obj.getPrice())
+                        .saleDate( FormatterUtils.getDateByString(obj.getSaleDate()) )
+                        .dueDate( FormatterUtils.getDateByString(obj.getDueDate()) )
                         .part(obj.getPart())
                         .createDate(LocalDateTime.now())
                         .customer( this.customerServiceImpl.getCustomer(obj.getCustomer()) )

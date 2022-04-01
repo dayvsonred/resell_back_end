@@ -23,7 +23,7 @@ public class FormatterUtils {
         return  date.format(formatters);
     }
 
-    private LocalDate getDateByString(String date){
+    public static LocalDate getDateByString(String date){
         if (isNull(date)) {
             return null;
         }
