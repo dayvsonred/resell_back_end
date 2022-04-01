@@ -1,6 +1,8 @@
 package com.resell.person.services;
 
 import com.resell.person.dto.SalesDTO;
+import com.resell.person.entities.Customer;
+import com.resell.person.entities.Person;
 import com.resell.person.entities.Sales;
 import com.resell.person.exception.CustomerException;
 import com.resell.person.repositories.SalesRepository;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SalesServiceImpl implements SalesService {
@@ -53,4 +56,12 @@ public class SalesServiceImpl implements SalesService {
                         .customer( this.customerServiceImpl.getCustomer(obj.getCustomer()) )
                 .build());
     }
+
+
+    public List<SalesDTO> salesLast(Long customerId) throws CustomerException {
+        List<Sales> SalesList = this.salesRepository.findAllByCustomer(Customer.builder().id(customerId).build());
+        return SalesList.stream().map(obj -> new SalesDTO(obj)).collect(Collectors.toList());
+
+    }
+
 }
