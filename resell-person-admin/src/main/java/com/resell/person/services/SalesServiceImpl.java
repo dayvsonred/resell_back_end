@@ -45,6 +45,7 @@ public class SalesServiceImpl implements SalesService {
         return this.create(Sales.builder()
                         .paid(obj.getPaid())
                         .price(obj.getPrice())
+                        .product(obj.getProduct())
                         .saleDate( FormatterUtils.getDateByString(obj.getSaleDate()) )
                         .dueDate( FormatterUtils.getDateByString(obj.getDueDate()) )
                         .part(obj.getPart())

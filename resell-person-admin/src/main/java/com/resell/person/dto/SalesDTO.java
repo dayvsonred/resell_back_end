@@ -27,6 +27,7 @@ public class SalesDTO implements Serializable {
 
     private Long id;
     private BigDecimal price;
+    private String product;
     private Boolean paid;
     private String saleDate;
     private String dueDate;
@@ -37,6 +38,7 @@ public class SalesDTO implements Serializable {
     public SalesDTO(Sales obj){
         this.id = obj.getId();
         this.price = obj.getPrice();
+        this.product = obj.getProduct();
         this.paid = obj.getPaid();
         this.saleDate = obj.getSaleDate().toString();
         this.dueDate = obj.getDueDate().toString();
