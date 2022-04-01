@@ -25,7 +25,7 @@ public class Person implements Serializable {
     private String email;
     private String cpf;
 
-    @OneToMany(mappedBy="person")
-    private List<Customer> customer;
+//    @OneToMany(mappedBy="person")
+//    private List<Customer> customer;
 
 }

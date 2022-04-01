@@ -12,5 +12,5 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     //@Cacheable("FeatureRecordingRepository.findAllByStatus")
-    List<Customer> findAllByPerson(Long person);
+    List<Customer> findAllByPerson(Person person);
 }

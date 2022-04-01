@@ -26,7 +26,7 @@ public class Customer implements Serializable {
     @JoinColumn(name="person_id", nullable=false)
     private Person person;
 
-    @OneToMany(mappedBy="customer")
-    private List<Sales> sales;
+//    @OneToMany(mappedBy="customer")
+//    private List<Sales> sales;
 
 }

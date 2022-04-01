@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     public List<Customer> myCustomers(Long person_id){
-        return customerRepository.findAllByPerson(person_id);
+        return customerRepository.findAllByPerson(Person.builder().id(person_id).build());
     }
 
     public Customer customerInsert(CustomerDTO obj) throws PersonException {
