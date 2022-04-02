@@ -1,4 +1,4 @@
-package com.resell.gateway.configs;
+package com.resell.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -25,11 +25,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private JwtTokenStore tokenStore;
 
-    private static final String[] PUBLIC = { "/resell-oauth/**", "/oauth/**" }; //"/resell-oauth/oauth/token"
+    private static final String[] PUBLIC = {  "/resell-users/users/**" };
 
-    private static final String[] OPERATOR = { "/resell-users/**", "/resell-bff/**", "/resell-person/**", };
+//    private static final String[] OPERATOR = { "/resell-users/users/**", };
 
-    //private static final String[] ADMIN = { "/hr-payroll/**", "/hr-user/**", "/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**" };
+//    private static final String[] ADMIN = { "/hr-payroll/**", "/hr-user/**", "/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**" };
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -41,7 +41,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
-                .antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR", "ADMIN")
+                .antMatchers(HttpMethod.GET).hasAnyRole("OPERATOR", "ADMIN")
                 //.antMatchers(ADMIN).hasRole("ADMIN")
                 .anyRequest().authenticated();
 

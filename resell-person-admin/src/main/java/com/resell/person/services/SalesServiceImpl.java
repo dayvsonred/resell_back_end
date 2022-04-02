@@ -61,7 +61,6 @@ public class SalesServiceImpl implements SalesService {
     public List<SalesDTO> salesLast(Long customerId) throws CustomerException {
         List<Sales> SalesList = this.salesRepository.findAllByCustomer(Customer.builder().id(customerId).build());
         return SalesList.stream().map(obj -> new SalesDTO(obj)).collect(Collectors.toList());
-
     }
 
 }
