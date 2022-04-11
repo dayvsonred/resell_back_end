@@ -1,13 +1,12 @@
-package com.resell.oauth.dto;
+package com.resell.person.dto.oauth;
 
-import com.resell.oauth.entities.Role;
-import com.resell.oauth.entities.User;
+
 import lombok.*;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Getter
 @Setter
@@ -22,6 +21,6 @@ public class UserTokenDTO implements Serializable {
     private String name;
     private String email;
     private String password;
-    private Set<Role> roles = new HashSet<>();
+    private Set<String> roles = new HashSet<>();
 
 }

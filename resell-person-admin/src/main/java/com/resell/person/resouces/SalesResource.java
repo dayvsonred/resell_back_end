@@ -29,6 +29,6 @@ public class SalesResource {
 
     @GetMapping(value = "/last/{customerId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<SalesDTO>> salesLast(@PathVariable Long customerId) throws CustomerException {
-        return ResponseEntity.ok(this.salesServiceImpl.salesLast(customerId));
+        return ResponseEntity.ok(this.salesServiceImpl.salesLastGetCustomerByToken(customerId));
     }
 }

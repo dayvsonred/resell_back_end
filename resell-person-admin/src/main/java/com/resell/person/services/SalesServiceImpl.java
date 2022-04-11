@@ -5,9 +5,11 @@ import com.resell.person.entities.Customer;
 import com.resell.person.entities.Person;
 import com.resell.person.entities.Sales;
 import com.resell.person.exception.CustomerException;
+import com.resell.person.integration.OauthIntegration;
 import com.resell.person.repositories.SalesRepository;
 import com.resell.person.util.FormatterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,6 +24,9 @@ public class SalesServiceImpl implements SalesService {
 
     @Autowired
     private SalesRepository salesRepository;
+
+    @Autowired
+    private OauthService oauthService;
 
     @Override
     public Sales create(Sales obj) {
@@ -62,5 +67,21 @@ public class SalesServiceImpl implements SalesService {
         List<Sales> SalesList = this.salesRepository.findAllByCustomer(Customer.builder().id(customerId).build());
         return SalesList.stream().map(obj -> new SalesDTO(obj)).collect(Collectors.toList());
     }
+
+    public List<SalesDTO> salesLastGetCustomerByToken(Long customerId) throws CustomerException {
+
+        if(customerId.equals(null)){
+            System.out.println("e null");
+           /// this.oauthService.getUserData()
+
+        }
+
+
+
+
+        return this.salesLast(customerId);
+    }
+
+
 
 }

@@ -37,6 +37,7 @@ spring:
 #            probability: 1.0
 
 zuul:
+  sensitive-headers: Cookie,Set-Cookie,Authorization
   routes:
     resell-oauth:
       service-id: resell-oauth
@@ -48,7 +49,15 @@ zuul:
     resell-person:
       service-id: resell-person
       path: /resell-person/**
-
+      sensitiveHeaders: 'Cookie,Set-Cookie'
+      #sensitive-headers:
+      #  - Cookie,Set-Cookie,Authorization
+      #customSensitiveHeaders: false
+  add-host-header: true
+  add-host-cookie: true
+  host:
+    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
 
 jwt:
   secret: "MY-SECRET-KEY"
