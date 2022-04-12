@@ -15,4 +15,5 @@ public class TokenCardDTO implements Serializable {
     @JsonProperty("number_token")
     private String numberToken;
 
+
 }

@@ -19,7 +19,8 @@ spring:
     thread:
       min: 1
       max: 4
-
+  jackson:
+    default-property-inclusion: NON_NULL
 
 eureka:
   instance: instance-id=${spring:application:name}:${spring:application:instance_id:${random:value}}
@@ -49,12 +50,12 @@ integration:
       grantType: client_credentials
 
 feign:
-  client:
-    config:
-      feignName:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
+  #client:
+    #config:
+      #feignName:
+        #connectTimeout: 5000
+        #readTimeout: 5000
+        #loggerLevel: full
 
   compression:
     request:

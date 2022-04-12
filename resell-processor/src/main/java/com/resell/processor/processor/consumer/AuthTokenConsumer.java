@@ -26,7 +26,7 @@ public class AuthTokenConsumer {
             System.out.println("RabbitListener +++++++++");
             System.out.println("**********************************************************");
 
-            this.getNetPaymentsService.generateAccessToken();
+            this.getNetPaymentsService.createdPaymentGetNet();
 
         } catch (Exception be) {
             log.error(be.getMessage(), be);

@@ -21,10 +21,10 @@ public class FooConfiguration {
 //        return new feign.Contract.Default();
 //    }
 
-    @Bean
-    Logger.Level feignLoggerLevel() {
-        return Logger.Level.FULL;
-    }
+//    @Bean
+//    Logger.Level feignLoggerLevel() {
+//        return Logger.Level.FULL;
+//    }
 
 
 //    @Bean
