@@ -32,9 +32,18 @@ api:
   rabbitmq:
     user:
       token:
-        exchange: resell-person-auth-token-exchange
+        exchange: resell.person.auth.token.exchange
         routingkey: #
-        queue: resell-person-auth-token-queue
+        routing: process
+        queue: resell.person.auth.token.queue
+        max.retries: 1
+        dlq:
+          routing: dlq
+          queue: resell.person.auth.token.queue.dlq
+          delay: 1000
+        parkinglot:
+          queue: resell.person.auth.token.queue.parkinglot
+          routing: parkinglot
     getnet:
       auth:
         exchange: resell-getnet-creat-auth-exchange

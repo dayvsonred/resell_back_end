@@ -65,7 +65,7 @@ public class RabbitListenerConfiguration {
         connectionFactory.setUsername(user);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
-        connectionFactory.setPublisherConfirms(true);
+        //connectionFactory.setPublisherConfirms(true);
         return connectionFactory;
     }
 

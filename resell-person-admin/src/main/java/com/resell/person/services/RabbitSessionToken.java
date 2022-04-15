@@ -1,6 +1,8 @@
 package com.resell.person.services;
 
-import com.resell.person.entities.session.UserSessionRedis;
+import com.resell.person.dto.oauth.UserSessionRedisDTO;
+import com.resell.person.pruducer.SessionTokenProducer;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +11,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class RabbitSessionToken {
 
-    @Autowired
-    private AmqpTemplate rabbitTemplate;
+    private final SessionTokenProducer sessionTokenProducer;
 
-
-    @Value("${api.rabbitmq.user.token.exchange}")
-    private String exchange;
-
-    @Value("${api.rabbitmq.user.token.routingkey}")
-    private String routingkey;
-
-    public void send(UserSessionRedis userSessionRedis) {
+    public void send(UserSessionRedisDTO userSessionRedis) {
         try{
-            System.out.println("Send for RABBIT : " + userSessionRedis.getSession());
-            rabbitTemplate.convertAndSend(exchange, routingkey, userSessionRedis);
+            this.sessionTokenProducer.send(userSessionRedis);
         }catch (Exception e) {
             log.error(e.getMessage(), e);
 

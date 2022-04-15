@@ -22,6 +22,4 @@ public class UserSessionRedis {
     private String cpf;
     private String userID;
 
-
-
 }

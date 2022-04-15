@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e217feee-2dad-469d-8366-56f0f1b17c2d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/resell-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resell-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resell-processor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resell-processor/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resell-processor/src/main/java/com/resell/processor/processor/config/FooConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resell-processor/src/main/java/com/resell/processor/processor/consumer/AuthTokenConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/resell-processor/src/main/java/com/resell/processor/processor/consumer/AuthTokenConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resell-processor/src/main/java/com/resell/processor/processor/integration/GetNetPaymentsIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/resell-processor/src/main/java/com/resell/processor/processor/integration/GetNetPaymentsIntegration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

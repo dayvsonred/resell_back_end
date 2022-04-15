@@ -14,7 +14,7 @@ public class GetNetAuthConsumer {
 
     private GetNetPaymentsService getNetPaymentsService;
 
-//    @RabbitListener(queues = {"${api.rabbitmq.user.token.queue}"})
+//    @RabbitListener(queues = {"${api.rabbitmq.getnet.payments.credit.queue}"})
 //    public void receiveCreatedAuthEvent(Long id) {
 //        try {
 //

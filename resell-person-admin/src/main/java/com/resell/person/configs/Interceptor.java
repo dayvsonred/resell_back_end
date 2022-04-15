@@ -1,8 +1,7 @@
 package com.resell.person.configs;
 
-import com.resell.person.dto.oauth.UserTokenDTO;
-import com.resell.person.entities.session.UserSessionRedis;
-import com.resell.person.services.OauthService;
+
+import com.resell.person.dto.oauth.UserSessionRedisDTO;
 import com.resell.person.services.RabbitSessionToken;
 import com.resell.person.services.UserSessionService;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +56,7 @@ public class Interceptor implements HandlerInterceptor {
          *
          * */
 
-        rabbitSessionToken.send(UserSessionRedis.builder().token(token).session(sessionHeader).build());
+        rabbitSessionToken.send( UserSessionRedisDTO.builder().token(token).session(sessionHeader).build() );
 
         /**
          * get infos do toke add dados user na session

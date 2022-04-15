@@ -1,12 +1,9 @@
 package com.resell.processor.processor.integration;
 
-import com.resell.processor.processor.config.FooConfiguration;
 import com.resell.processor.processor.dto.getnet.*;
-import feign.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 

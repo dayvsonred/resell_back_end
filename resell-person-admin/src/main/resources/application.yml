@@ -26,9 +26,10 @@ api:
   rabbitmq:
     user:
       token:
-        exchange: resell-person-auth-token-exchange
+        exchange: resell.person.auth.token.exchange
         routingkey: #
-        queue: resell-person-auth-token-queue
+        routing: process
+        queue: resell.person.auth.token.queue
 
 worker:
   rabbitmq:

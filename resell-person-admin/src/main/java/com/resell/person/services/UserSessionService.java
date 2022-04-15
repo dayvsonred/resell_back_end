@@ -1,6 +1,6 @@
 package com.resell.person.services;
 
-import com.resell.person.dto.oauth.UserTokenDTO;
+
 import com.resell.person.entities.session.UserSessionRedis;
 import com.resell.person.repositories.UserSessionRepository;
 import lombok.RequiredArgsConstructor;
