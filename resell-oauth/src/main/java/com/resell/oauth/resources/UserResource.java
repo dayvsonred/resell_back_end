@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "resell-oauth/users")
+@RequestMapping(value = "/users")
 public class UserResource {
 
     @Autowired
@@ -45,7 +45,8 @@ public class UserResource {
     public ResponseEntity<UserTokenDTO> findUserByToken() {
         String UserEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            return ResponseEntity.ok().body(UserTokenDTO.builder().email(UserEmail).build());
+            User user = service.findByEmail(UserEmail);
+            return ResponseEntity.ok().body(UserTokenDTO.builder().email(UserEmail).name(user.getName()).id(user.getId()).build());
         }
         catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

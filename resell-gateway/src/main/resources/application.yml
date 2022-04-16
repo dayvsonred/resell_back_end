@@ -42,7 +42,7 @@ zuul:
     resell-oauth:
       service-id: resell-oauth
       path: /resell-oauth/**
-      sensitive-headers: Cookie,Set-Cookie
+      sensitive-headers: 'Cookie,Set-Cookie'
     resell-users:
       service-id: resell-users
       path: /resell-users/**

@@ -3,6 +3,7 @@ package com.resell.person.entities.session;
 import lombok.*;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.TimeToLive;
 
 
 @RedisHash("userSession")
@@ -21,5 +22,8 @@ public class UserSessionRedis {
     private String email;
     private String cpf;
     private String userID;
+
+    @TimeToLive
+    private Long ttl;
 
 }

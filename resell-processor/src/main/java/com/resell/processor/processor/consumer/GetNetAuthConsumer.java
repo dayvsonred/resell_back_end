@@ -1,10 +1,8 @@
 package com.resell.processor.processor.consumer;
 
-import com.resell.processor.processor.dto.UserSessionRedisDTO;
 import com.resell.processor.processor.service.GetNetPaymentsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component

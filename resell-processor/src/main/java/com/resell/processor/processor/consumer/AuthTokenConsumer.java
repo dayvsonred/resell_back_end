@@ -1,7 +1,6 @@
 package com.resell.processor.processor.consumer;
 
-import com.resell.processor.processor.dto.UserSessionRedisDTO;
-import com.resell.processor.processor.service.GetNetPaymentsService;
+import com.resell.processor.processor.dto.oauth.UserSessionRedisDTO;
 import com.resell.processor.processor.service.SessionUserTokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
