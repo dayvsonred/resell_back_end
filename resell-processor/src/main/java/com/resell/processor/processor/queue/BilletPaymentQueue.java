@@ -1,6 +1,5 @@
 package com.resell.processor.processor.queue;
 
-import com.resell.processor.processor.config.RabbitListenerConfiguration;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -15,40 +14,40 @@ import java.util.Map;
 import static com.resell.processor.processor.config.RabbitListenerConfiguration.*;
 
 @Configuration
-public class AuthTokenQueue {
+public class BilletPaymentQueue {
 
-    @Value("${api.rabbitmq.user.token.exchange}")
+    @Value("${api.rabbitmq.billet.payment.exchange}")
     private String nameExchange;
 
-    @Value("${api.rabbitmq.user.token.queue}")
+    @Value("${api.rabbitmq.billet.payment.queue}")
     private String nameQueue;
 
-    @Value("${api.rabbitmq.user.token.routing}")
+    @Value("${api.rabbitmq.billet.payment.routing}")
     private String nameRouting;
 
-    @Value("${api.rabbitmq.user.token.dlq.queue}")
+    @Value("${api.rabbitmq.billet.payment.dlq.queue}")
     private String nameDlqQueue;
 
-    @Value("${api.rabbitmq.user.token.dlq.routing}")
+    @Value("${api.rabbitmq.billet.payment.dlq.routing}")
     private String nameDlqRouting;
 
-    @Value("${api.rabbitmq.user.token.dlq.delay}")
+    @Value("${api.rabbitmq.billet.payment.dlq.delay}")
     private Long timeDlqDelay;
 
-    @Value("${api.rabbitmq.user.token.parkinglot.queue}")
+    @Value("${api.rabbitmq.billet.payment.parkinglot.queue}")
     private String namePklQueue;
 
-    @Value("${api.rabbitmq.user.token.parkinglot.routing}")
+    @Value("${api.rabbitmq.billet.payment.parkinglot.routing}")
     private String namePklRouting;
 
 
     @Bean
-    public TopicExchange tokenExchange() {
+    public TopicExchange billetPaymentTokenExchange() {
         return new TopicExchange(nameExchange, true, false);
     }
 
     @Bean
-    public Queue tokenQueue() {
+    public Queue billetPaymentTokenQueue() {
         Map<String, Object> args = new HashMap<>();
         args.put(DEAD_LETTER_EXCHANGE_HEADER, nameExchange);
         args.put(DEAD_LETTER_ROUTING_KEY_HEADER, nameDlqRouting);
@@ -56,12 +55,12 @@ public class AuthTokenQueue {
     }
 
     @Bean
-    public Binding tokenBinding() {
-        return BindingBuilder.bind(tokenQueue()).to(tokenExchange()).with(nameRouting);
+    public Binding billetPaymentTokenBinding() {
+        return BindingBuilder.bind(billetPaymentTokenQueue()).to(billetPaymentTokenExchange()).with(nameRouting);
     }
 
     @Bean
-    public Queue tokenQueueDLQ() {
+    public Queue billetPaymentTokenQueueDLQ() {
         Map<String, Object> args = new HashMap<>();
         args.put(DEAD_LETTER_EXCHANGE_HEADER, nameExchange);
         args.put(DEAD_LETTER_ROUTING_KEY_HEADER, nameRouting);
@@ -70,18 +69,18 @@ public class AuthTokenQueue {
     }
 
     @Bean
-    public Binding tokenBindingDLQ() {
-        return BindingBuilder.bind(tokenQueueDLQ()).to(tokenExchange()).with(nameDlqRouting);
+    public Binding billetPaymentTokenBindingDLQ() {
+        return BindingBuilder.bind(billetPaymentTokenQueueDLQ()).to(billetPaymentTokenExchange()).with(nameDlqRouting);
     }
 
     @Bean
-    public Queue tokenQueueParkingLot() {
+    public Queue billetPaymentTokenQueueParkingLot() {
         return new Queue(namePklQueue, true, false, false);
     }
 
     @Bean
-    public Binding tokenBindingParkingLot() {
-        return BindingBuilder.bind(tokenQueueParkingLot()).to(tokenExchange()).with(namePklRouting);
+    public Binding billetPaymentTokenBindingParkingLot() {
+        return BindingBuilder.bind(billetPaymentTokenQueueParkingLot()).to(billetPaymentTokenExchange()).with(namePklRouting);
     }
 
 

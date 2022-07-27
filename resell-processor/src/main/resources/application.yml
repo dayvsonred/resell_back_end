@@ -49,6 +49,20 @@ api:
         exchange: resell-getnet-creat-auth-exchange
         routingkey: #
         queue: resell-getnet-creat-auth-queue
+    billet:
+      payment:
+        exchange: resell.person.billet.payment.exchange
+        routingkey: #
+        routing: process
+        queue: resell.person.billet.payment.queue
+        max.retries: 1
+        dlq:
+          routing: dlq
+          queue: resell.person.billet.payment.queue.dlq
+          delay: 1000
+        parkinglot:
+          queue: resell.person.billet.payment.queue.parkinglot
+          routing: parkinglot
 
 integration:
   getnet:

@@ -11,10 +11,11 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BilletPaymentDTO implements Serializable {
+public class BilletPaymentRabbitDTO implements Serializable {
 
     private String hash;
     private BigInteger amount;
     private String barCode;
     private String status;
+    private String token;
 }

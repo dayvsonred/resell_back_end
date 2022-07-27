@@ -15,18 +15,21 @@ public class OauthService {
     private final OauthIntegration oauthIntegration;
 
     public UserTokenDTO getUserData(String token){
+        try{
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("Authorization", token);
+            UserTokenDTO userTokenDTO = oauthIntegration.findUserByToken(httpHeaders);
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Authorization", token);
+            /**
+             * fazer find dos dados do usuario
+             * add cach com redis
+             * */
 
-        UserTokenDTO userTokenDTO = oauthIntegration.findUserByToken(httpHeaders);
+            return userTokenDTO;
 
-        /**
-         * fazer find dos dados do usuario
-         * add cach com redis
-         * */
-
-
-        return userTokenDTO;
+        }catch (Exception e){
+            log.error("ERROR GET USER BY TOKEN");
+            throw new RuntimeException("ERROR GET USER BY TOKEN", e);
+        }
     }
 }

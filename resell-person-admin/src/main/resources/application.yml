@@ -30,6 +30,12 @@ api:
         routingkey: #
         routing: process
         queue: resell.person.auth.token.queue
+    billet:
+      payment:
+        exchange: resell.person.billet.payment.exchange
+        routingkey: #
+        routing: process
+        queue: resell.person.billet.payment.queue
 
 worker:
   rabbitmq:

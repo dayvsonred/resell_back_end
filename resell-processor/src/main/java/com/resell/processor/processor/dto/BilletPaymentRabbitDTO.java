@@ -1,4 +1,4 @@
-package com.resell.person.dto;
+package com.resell.processor.processor.dto;
 
 
 import lombok.*;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "resell-users", path = "/users")
+@FeignClient(name = "resell-oauth", path = "/users")
 public interface OauthIntegration {
 
     @GetMapping(value = "/token")
