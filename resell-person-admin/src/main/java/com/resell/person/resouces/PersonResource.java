@@ -22,4 +22,9 @@ public class PersonResource {
     public ResponseEntity<Person> creat(@RequestBody PersonDTO dto) throws Exception {
         return ResponseEntity.ok(this.personServiceImpl.createPerson(dto));
     }
+
+    @GetMapping(value = "/test", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<String> test() throws Exception {
+        return ResponseEntity.ok("test ok 4545a4s5d4asd");
+    }
 }

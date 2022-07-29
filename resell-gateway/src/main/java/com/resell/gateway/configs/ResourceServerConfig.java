@@ -41,6 +41,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR", "ADMIN")
                 //.antMatchers(ADMIN).hasRole("ADMIN")
                 .anyRequest().authenticated();
@@ -51,10 +52,21 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("*"));
+        corsConfig.addAllowedOrigin("*");
+        //corsConfig.setAllowedOrigins(Arrays.asList("*"));
         corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        corsConfig.setAllowCredentials(true);
-        corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "User-Agent"));
+        //corsConfig.setAllowCredentials(true);
+        corsConfig.addAllowedHeader("*");
+//        corsConfig.setAllowedHeaders(Arrays.asList("*"));
+//        corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "User-Agent"));
+
+        //corsConfig.setAllowedOriginPatterns(Arrays.asList(CorsConfiguration.ALL));
+//        corsConfig.setAllowedHeaders(Arrays.asList("Authorization",
+//                "Content-Type",
+//                "User-Agent",
+//                "Origin", "X-Requested-With", "Accept", "Accept-Encoding", "Accept-Language", "Cache-Control",
+//                "Connection","Content-Length", "Host", "Pragma", "Referer"
+//        ));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);

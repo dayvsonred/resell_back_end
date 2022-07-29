@@ -25,7 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private JwtTokenStore tokenStore;
 
-    private static final String[] PUBLIC = {  "/resell-users/users/**" };
+    private static final String[] PUBLIC = {  "/resell-users/users/**", "/oauth/**"  };
 
 //    private static final String[] OPERATOR = { "/resell-users/users/**", };
 
@@ -41,32 +41,45 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(HttpMethod.GET).hasAnyRole("OPERATOR", "ADMIN")
                 //.antMatchers(ADMIN).hasRole("ADMIN")
-                .anyRequest().authenticated();
+                //.anyRequest().authenticated();
+                .and().authorizeRequests().antMatchers("/**").authenticated();
 
-        http.cors().configurationSource(corsConfigurationSource());
+//        http.cors().configurationSource(corsConfigurationSource());
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("*"));
-        corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        corsConfig.setAllowCredentials(true);
-        corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "User-Agent"));
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration corsConfig = new CorsConfiguration();
+//        corsConfig.setAllowedOrigins(Arrays.asList("*"));
+        //corsConfig.setAllowedOriginPatterns(Arrays.asList(CorsConfiguration.ALL));
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);
-        return source;
-    }
+        //corsConfig.addAllowedOriginPattern("*");
+        //corsConfig.addAllowedOrigin("*");
+//        corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "PATCH", "OPTIONS"));
+//        corsConfig.addAllowedHeader("*");
+        //corsConfig.setAllowCredentials(true);
+//        corsConfig.setAllowedHeaders(Arrays.asList("Authorization",
+//                "Content-Type",
+//                "User-Agent",
+//                "Origin", "X-Requested-With", "Accept", "Accept-Encoding", "Accept-Language", "Cache-Control",
+//                "Connection","Content-Length", "Host", "Pragma", "Referer"
+//        ));
+        //corsConfig.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//        return source;
+//    }
 
-    @Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter() {
-        FilterRegistrationBean<CorsFilter> bean
-                = new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
-        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return bean;
-    }
+//    @Bean
+//    public FilterRegistrationBean<CorsFilter> corsFilter() {
+//        FilterRegistrationBean<CorsFilter> bean
+//                = new FilterRegistrationBean<>(new CorsFilter(corsConfigurationSource()));
+//        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//        return bean;
+//    }
 
 }
