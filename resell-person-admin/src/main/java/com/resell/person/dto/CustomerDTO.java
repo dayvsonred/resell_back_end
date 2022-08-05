@@ -19,6 +19,7 @@ public class CustomerDTO implements Serializable {
     private Long id;
     private String name;
     private String phone;
+    private String email;
     private Long person;
 
     public CustomerDTO(Customer customer){

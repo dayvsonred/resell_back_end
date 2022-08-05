@@ -21,6 +21,7 @@ public class Customer implements Serializable {
     private Long id;
     private String name;
     private String phone;
+    private String email;
 
     @ManyToOne
     @JoinColumn(name="person_id", nullable=false)
