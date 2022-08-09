@@ -15,7 +15,9 @@ spring:
     port: 5672
     username: guest
     password: guest
-
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ANT_PATH_MATCHER
 eureka:
   instance: instance-id=${spring:application:name}:${spring:application:instance_id:${random:value}}
   client:
@@ -34,3 +36,5 @@ api:
 worker:
   rabbitmq:
     exchange:
+
+inputFilePath: ''

@@ -5,7 +5,6 @@ import com.resell.person.dto.PersonDTO;
 import com.resell.person.entities.Person;
 import com.resell.person.exception.PersonException;
 import com.resell.person.repositories.PersonRepository;
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
